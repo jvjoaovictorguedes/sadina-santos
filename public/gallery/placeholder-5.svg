@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
+  <defs>
+    <linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6E1440"/>
+      <stop offset="100%" stop-color="#E8639B"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="480" fill="url(#g5)"/>
+  <g opacity="0.35" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M 0 330 Q 45.0 330 90 364 Q 135.0 364 180 349 Q 225.0 349 270 380 Q 315.0 380 360 380 Q 405.0 380 450 380"/>
+    <path d="M 0 87 Q 45.0 87 90 93 Q 135.0 93 180 127 Q 225.0 127 270 71 Q 315.0 71 360 31 Q 405.0 31 450 87" opacity="0.6"/>
+    <path d="M 0 271 Q 45.0 271 90 329 Q 135.0 329 180 376 Q 225.0 376 270 380 Q 315.0 380 360 321 Q 405.0 321 450 288" opacity="0.4"/>
+  </g>
+  <circle cx="240" cy="240" r="46" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
+  <text x="240" y="245" font-family="Georgia, serif" font-size="15" fill="#ffffff" text-anchor="middle" opacity="0.85">Sadina Santos</text>
+</svg>

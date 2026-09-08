@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+:root {
+  /* Paleta derivada da logo Sadina Santos: rosa-magenta vibrante sobre
+     fundo marfim, com um preto-ameixa suavizado no lugar do preto puro. */
+  --color-paper: #fbf5f2;
+  --color-paper-soft: #f4e8e6;
+  --color-ink: #241019;
+  --color-ink-soft: #6f5860;
+  --color-border: rgba(36, 16, 25, 0.12);
+  --color-brand: #d6127a;
+  --color-brand-deep: #7a0f44;
+  --color-brand-light: #f2a6ce;
+  --color-gold: #b8935a;
+  --shadow-color: rgba(122, 15, 68, 0.16);
+}
+
+[data-theme="dark"] {
+  --color-paper: #1b1215;
+  --color-paper-soft: #251a1e;
+  --color-ink: #f6ece9;
+  --color-ink-soft: #c9adb6;
+  --color-border: rgba(246, 236, 233, 0.14);
+  --color-brand: #ef4fa0;
+  --color-brand-deep: #f2a6ce;
+  --color-brand-light: #b8215f;
+  --color-gold: #d2b483;
+  --shadow-color: rgba(0, 0, 0, 0.45);
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-soft: var(--color-paper-soft);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-border: var(--color-border);
+  --color-brand: var(--color-brand);
+  --color-brand-deep: var(--color-brand-deep);
+  --color-brand-light: var(--color-brand-light);
+  --color-gold: var(--color-gold);
+  --font-display: "Fraunces", serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+/* Foco visível para acessibilidade de teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- Motivos decorativos do universo capilar ---------- */
+
+/* Textura sutil de "pente": linhas verticais finas em baixa opacidade,
+   usada como textura de fundo em seções específicas. */
+.texture-comb {
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-ink) 0px,
+    var(--color-ink) 1px,
+    transparent 1px,
+    transparent 14px
+  );
+  opacity: 0.045;
+}
+
+/* Fita/faixa corrida com os nomes dos serviços, separados por um ícone
+   de tesoura em vez do clichê "·". Duplicamos o conteúdo via JSX para
+   criar o loop infinito. */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll 50s linear infinite;
+}
+
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Traço de mecha desenhado (usado no divisor entre seções e no hero) */
+@keyframes draw-strand {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.strand-draw path {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: draw-strand 1.8s ease-out forwards;
+}
+
+.marquee-row {
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-ink) 8%,
+    var(--color-ink) 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-ink) 8%,
+    var(--color-ink) 92%,
+    transparent 100%
+  );
+}
