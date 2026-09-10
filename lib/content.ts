@@ -12,10 +12,7 @@ import { createClient } from "@/lib/supabase/server";
 import type { SiteSettings } from "@/lib/supabase/types";
 
 export async function getSiteSettings(): Promise<SiteSettings> {
-  if (
-    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  )
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY)
     return fallbackSite;
   const supabase = await createClient();
   const { data } = await supabase
@@ -26,10 +23,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 }
 
 export async function getServices(): Promise<Servico[]> {
-  if (
-    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  )
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY)
     return fallbackServices;
   const supabase = await createClient();
   const { data } = await supabase
@@ -46,10 +40,7 @@ export async function getServices(): Promise<Servico[]> {
 }
 
 export async function getPortfolio(): Promise<Trabalho[]> {
-  if (
-    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  )
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY)
     return fallbackPortfolio;
   const supabase = await createClient();
   const { data } = await supabase
@@ -70,10 +61,7 @@ export async function getPortfolio(): Promise<Trabalho[]> {
 }
 
 export async function getTestimonials(): Promise<Depoimento[]> {
-  if (
-    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  )
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY)
     return fallbackTestimonials;
   const supabase = await createClient();
   const { data } = await supabase
