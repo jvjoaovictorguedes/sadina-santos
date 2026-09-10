@@ -1,8 +1,12 @@
 import { ScissorsIcon } from "@/components/ui/Icons";
-import { servicos } from "@/content/servicos";
+import { servicos, type Servico } from "@/content/servicos";
 
-export function ServicesMarquee() {
-  const items = servicos.map((s) => s.nome);
+export function ServicesMarquee({
+  services = servicos,
+}: {
+  services?: Servico[];
+}) {
+  const items = services.map((s) => s.nome);
   const row = [...items, ...items];
 
   return (

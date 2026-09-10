@@ -14,6 +14,15 @@ npm run dev
 
 Abra http://localhost:3000
 
+## Ativando o admin e o Supabase
+
+1. Crie um projeto em https://supabase.com e copie `.env.example` para `.env.local`.
+2. Preencha `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_ANON_KEY` com os valores do projeto.
+3. No Supabase, abra **SQL Editor**, execute `supabase/migrations/001_cms.sql` e crie o usuário do admin em **Authentication > Users > Add user**.
+4. Rode o projeto e acesse `/admin/login` com o e-mail e a senha criados.
+
+O painel permite editar configurações do site, serviços, trabalhos e depoimentos, além de enviar imagens para o Storage. Em produção, adicione as mesmas variáveis de ambiente no provedor de deploy. O conteúdo local continua como fallback enquanto o Supabase não estiver configurado.
+
 ## Publicando na Vercel
 
 1. Crie um repositório no GitHub e suba esta pasta (ou use a CLI da Vercel direto, sem GitHub).
@@ -22,6 +31,7 @@ Abra http://localhost:3000
 4. Clique em Deploy. Pronto — a Vercel builda e publica automaticamente.
 
 Ou, direto do terminal, dentro da pasta do projeto:
+
 ```bash
 npm i -g vercel
 vercel
@@ -56,8 +66,8 @@ vercel
 ## Paleta de cores (`app/globals.css`)
 
 | Token                   | Claro     | Escuro    |
-| ------------------------ | --------- | --------- |
-| `--color-paper` (fundo)  | `#fbf5f2` | `#1b1215` |
-| `--color-ink` (texto)    | `#241019` | `#f6ece9` |
-| `--color-brand` (rosa)   | `#d6127a` | `#ef4fa0` |
-| `--color-gold` (acento)  | `#b8935a` | `#d2b483` |
+| ----------------------- | --------- | --------- |
+| `--color-paper` (fundo) | `#fbf5f2` | `#1b1215` |
+| `--color-ink` (texto)   | `#241019` | `#f6ece9` |
+| `--color-brand` (rosa)  | `#d6127a` | `#ef4fa0` |
+| `--color-gold` (acento) | `#b8935a` | `#d2b483` |

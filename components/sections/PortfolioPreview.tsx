@@ -2,8 +2,9 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Portfolio } from "@/components/sections/Portfolio";
+import type { Trabalho } from "@/content/portfolio";
 
-export function PortfolioPreview() {
+export function PortfolioPreview({ portfolio }: { portfolio?: Trabalho[] }) {
   return (
     <section className="bg-[var(--color-paper-soft)] py-20 md:py-28">
       <Container>
@@ -22,7 +23,7 @@ export function PortfolioPreview() {
         </div>
 
         <div className="mt-12">
-          <Portfolio limit={6} />
+          <Portfolio limit={6} portfolio={portfolio} />
         </div>
       </Container>
     </section>

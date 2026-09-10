@@ -138,3 +138,53 @@ textarea:focus-visible {
     transparent 100%
   );
 }
+
+/* Superfícies e espaçamento próprios da área administrativa. */
+.admin-shell {
+  padding-top: 7rem;
+}
+
+.admin-shell > div > header {
+  border-radius: 1.25rem;
+  background: var(--color-paper-soft);
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 14px 35px -24px var(--shadow-color);
+}
+
+.admin-shell nav button,
+.admin-shell header button,
+.admin-shell article button,
+.admin-shell form > button {
+  border-radius: 999px;
+}
+
+.admin-shell nav button {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.admin-shell article {
+  border-radius: 1.25rem;
+  box-shadow: 0 14px 35px -28px var(--shadow-color);
+}
+
+.admin-shell input,
+.admin-shell textarea,
+.admin-login input {
+  border-radius: 0.75rem;
+}
+
+.admin-shell textarea {
+  resize: vertical;
+}
+
+.admin-login {
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 50px -30px var(--shadow-color);
+}
+
+.admin-login button {
+  border-radius: 999px;
+}

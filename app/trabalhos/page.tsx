@@ -3,13 +3,18 @@ import { Container } from "@/components/ui/Container";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { site } from "@/content/site";
+import { getPortfolio, getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: `Trabalhos — ${site.name}`,
   description: "Galeria de transformações feitas no estúdio Sadina Santos.",
 };
 
-export default function TrabalhosPage() {
+export default async function TrabalhosPage() {
+  const [siteData, portfolio] = await Promise.all([
+    getSiteSettings(),
+    getPortfolio(),
+  ]);
   return (
     <>
       <section className="pt-32 pb-10 md:pt-40">
@@ -27,11 +32,11 @@ export default function TrabalhosPage() {
 
       <section className="pb-20 md:pb-28">
         <Container>
-          <Portfolio />
+          <Portfolio portfolio={portfolio} />
         </Container>
       </section>
 
-      <ContactCTA />
+      <ContactCTA siteData={siteData} />
     </>
   );
 }

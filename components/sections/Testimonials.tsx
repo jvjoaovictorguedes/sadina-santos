@@ -1,8 +1,12 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { depoimentos } from "@/content/depoimentos";
+import { depoimentos, type Depoimento } from "@/content/depoimentos";
 
-export function Testimonials() {
+export function Testimonials({
+  testimonials = depoimentos,
+}: {
+  testimonials?: Depoimento[];
+}) {
   return (
     <section className="bg-[var(--color-ink)] py-20 md:py-28">
       <Container>
@@ -13,7 +17,7 @@ export function Testimonials() {
         />
 
         <div className="mt-14 grid gap-8 md:grid-cols-3">
-          {depoimentos.map((d) => (
+          {testimonials.map((d) => (
             <blockquote
               key={d.nome}
               className="rounded-2xl border border-white/10 p-7"

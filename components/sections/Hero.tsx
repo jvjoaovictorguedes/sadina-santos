@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { site, whatsappLink } from "@/content/site";
+import type { Site } from "@/content/site";
 
-export function Hero() {
+export function Hero({ siteData = site }: { siteData?: Site }) {
   return (
     <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="texture-comb absolute inset-0" />
@@ -10,25 +11,30 @@ export function Hero() {
       <Container className="relative grid gap-14 md:grid-cols-[1.05fr_0.95fr] md:items-center">
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] px-4 py-1.5 text-xs text-[var(--color-ink-soft)]">
-            {site.heroBadge}
+            {siteData.heroBadge}
           </span>
 
           <h1 className="mt-6 font-display text-4xl leading-[1.08] text-[var(--color-ink)] md:text-6xl">
             Cabelos com identidade,
             <br />
-            <span className="italic text-[var(--color-brand)]">assinatura</span>{" "}
+            <span className="italic text-[var(--color-brand)]">
+              assinatura
+            </span>{" "}
             Sadina Santos.
           </h1>
 
           <p className="mt-6 max-w-md text-base leading-relaxed text-[var(--color-ink-soft)] md:text-lg">
             Corte, escova, química, penteados e mega hair — cada atendimento é
-            construído fio a fio, com técnica e acabamento de estúdio para
-            quem quer se ver e se sentir bem em cada detalhe.
+            construído fio a fio, com técnica e acabamento de estúdio para quem
+            quer se ver e se sentir bem em cada detalhe.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Link
-              href={whatsappLink("Olá! Gostaria de agendar um horário.")}
+              href={whatsappLink(
+                "Olá! Gostaria de agendar um horário.",
+                siteData,
+              )}
               target="_blank"
               className="rounded-full bg-[var(--color-brand)] px-7 py-3.5 text-sm font-medium text-white shadow-[0_14px_30px_-10px_var(--shadow-color)] transition-colors hover:bg-[var(--color-brand-deep)]"
             >
@@ -67,10 +73,22 @@ export function Hero() {
               strokeWidth="1"
               opacity="0.2"
             />
-            <g className="strand-draw" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <g
+              className="strand-draw"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
               <path d="M110 150c30 10 20 45 55 55s45-30 75-20 40 45 65 35" />
-              <path d="M110 230c30 -10 20 -45 55 -55s45 30 75 20 40 -45 65 -35" opacity="0.55" />
-              <path d="M120 200c40 0 40 20 80 20s40 -20 80 -20" opacity="0.35" />
+              <path
+                d="M110 230c30 -10 20 -45 55 -55s45 30 75 20 40 -45 65 -35"
+                opacity="0.55"
+              />
+              <path
+                d="M120 200c40 0 40 20 80 20s40 -20 80 -20"
+                opacity="0.35"
+              />
             </g>
           </svg>
 

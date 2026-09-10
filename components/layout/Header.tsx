@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { CloseIcon, MenuIcon } from "@/components/ui/Icons";
 import { site, whatsappLink } from "@/content/site";
+import type { Site } from "@/content/site";
 
 const links = [
   { href: "/", label: "Início" },
@@ -16,7 +17,7 @@ const links = [
   { href: "/sobre", label: "Sobre" },
 ];
 
-export function Header() {
+export function Header({ siteData = site }: { siteData?: Site }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -61,7 +62,7 @@ export function Header() {
               Sadina Santos
             </span>
             <span className="text-[11px] text-[var(--color-ink-soft)]">
-              {site.tagline}
+              {siteData.tagline}
             </span>
           </span>
         </Link>
@@ -85,7 +86,10 @@ export function Header() {
         <div className="hidden items-center gap-3 md:flex">
           <ThemeToggle />
           <Link
-            href={whatsappLink("Olá! Gostaria de agendar um horário.")}
+            href={whatsappLink(
+              "Olá! Gostaria de agendar um horário.",
+              siteData,
+            )}
             target="_blank"
             className="rounded-full bg-[var(--color-brand)] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[var(--color-brand-deep)]"
           >
@@ -119,7 +123,10 @@ export function Header() {
           <div className="mt-6 flex items-center justify-between">
             <ThemeToggle />
             <Link
-              href={whatsappLink("Olá! Gostaria de agendar um horário.")}
+              href={whatsappLink(
+                "Olá! Gostaria de agendar um horário.",
+                siteData,
+              )}
               target="_blank"
               className="rounded-full bg-[var(--color-brand)] px-5 py-2.5 text-sm font-medium text-white"
             >

@@ -6,18 +6,30 @@ import { PortfolioPreview } from "@/components/sections/PortfolioPreview";
 import { About } from "@/components/sections/About";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ContactCTA } from "@/components/sections/ContactCTA";
+import {
+  getPortfolio,
+  getServices,
+  getSiteSettings,
+  getTestimonials,
+} from "@/lib/content";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [site, services, portfolio, testimonials] = await Promise.all([
+    getSiteSettings(),
+    getServices(),
+    getPortfolio(),
+    getTestimonials(),
+  ]);
   return (
     <>
-      <Hero />
-      <ServicesMarquee />
-      <Services />
+      <Hero siteData={site} />
+      <ServicesMarquee services={services} />
+      <Services services={services} />
       <StrandDivider />
-      <PortfolioPreview />
+      <PortfolioPreview portfolio={portfolio} />
       <About />
-      <Testimonials />
-      <ContactCTA />
+      <Testimonials testimonials={testimonials} />
+      <ContactCTA siteData={site} />
     </>
   );
 }

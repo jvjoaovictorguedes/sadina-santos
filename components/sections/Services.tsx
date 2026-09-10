@@ -2,16 +2,19 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { serviceIcons } from "@/components/ui/Icons";
-import { servicos } from "@/content/servicos";
+import { servicos, type Servico } from "@/content/servicos";
 import { whatsappLink } from "@/content/site";
 
 export function Services({
   showDetails = false,
   hideHeading = false,
+  services,
 }: {
   showDetails?: boolean;
   hideHeading?: boolean;
+  services?: Servico[];
 }) {
+  const serviceList = services ?? servicos;
   return (
     <section id="servicos" className="py-20 md:py-28">
       <Container>
@@ -24,7 +27,7 @@ export function Services({
         )}
 
         <div className="mt-16 divide-y divide-[var(--color-border)]">
-          {servicos.map((servico) => {
+          {serviceList.map((servico) => {
             const Icon = serviceIcons[servico.icone];
             return (
               <div
@@ -55,7 +58,9 @@ export function Services({
                 </div>
 
                 <Link
-                  href={whatsappLink(`Olá! Gostaria de agendar: ${servico.nome}.`)}
+                  href={whatsappLink(
+                    `Olá! Gostaria de agendar: ${servico.nome}.`,
+                  )}
                   target="_blank"
                   className="text-sm font-medium text-[var(--color-ink)] transition-colors hover:text-[var(--color-brand)] md:justify-self-end"
                 >

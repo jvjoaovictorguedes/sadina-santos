@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { Services } from "@/components/sections/Services";
 import { ContactCTA } from "@/components/sections/ContactCTA";
 import { site } from "@/content/site";
+import { getServices, getSiteSettings } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: `Serviços — ${site.name}`,
@@ -10,7 +11,11 @@ export const metadata: Metadata = {
     "Corte, escova, química em geral, penteados e mega hair no estúdio Sadina Santos.",
 };
 
-export default function ServicosPage() {
+export default async function ServicosPage() {
+  const [siteData, services] = await Promise.all([
+    getSiteSettings(),
+    getServices(),
+  ]);
   return (
     <>
       <section className="pt-32 pb-10 md:pt-40">
@@ -26,8 +31,8 @@ export default function ServicosPage() {
         </Container>
       </section>
 
-      <Services showDetails hideHeading />
-      <ContactCTA />
+      <Services showDetails hideHeading services={services} />
+      <ContactCTA siteData={siteData} />
     </>
   );
 }

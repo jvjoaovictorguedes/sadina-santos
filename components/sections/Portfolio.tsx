@@ -2,7 +2,11 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { trabalhos, type TrabalhoCategoria } from "@/content/portfolio";
+import {
+  trabalhos,
+  type Trabalho,
+  type TrabalhoCategoria,
+} from "@/content/portfolio";
 
 type ModalImagem = {
   src: string;
@@ -17,15 +21,21 @@ const categorias: TrabalhoCategoria[] = [
   "Penteado",
 ];
 
-export function Portfolio({ limit }: { limit?: number }) {
+export function Portfolio({
+  limit,
+  portfolio = trabalhos,
+}: {
+  limit?: number;
+  portfolio?: Trabalho[];
+}) {
   const [filtro, setFiltro] = useState<TrabalhoCategoria>("Todos");
   const [imagemAmpliada, setImagemAmpliada] = useState<ModalImagem>(null);
 
   const lista = useMemo(() => {
     const base =
       filtro === "Todos"
-        ? trabalhos
-        : trabalhos.filter((t) => t.categoria === filtro);
+        ? portfolio
+        : portfolio.filter((t) => t.categoria === filtro);
     return limit ? base.slice(0, limit) : base;
   }, [filtro, limit]);
 

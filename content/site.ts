@@ -1,4 +1,20 @@
-export const site = {
+export type Site = {
+  name: string;
+  tagline: string;
+  title: string;
+  description: string;
+  whatsapp: string;
+  whatsappDisplay: string;
+  instagram: string;
+  instagramHandle: string;
+  email: string;
+  city: string;
+  address: string;
+  hours: { dias: string; horario: string }[];
+  heroBadge: string;
+};
+
+export const site: Site = {
   name: "Sadina Santos",
   tagline: "Mega Hair",
   title: "Sadina Santos — Cortes, Química e Mega Hair",
@@ -18,8 +34,11 @@ export const site = {
   heroBadge: "Atendimento com hora marcada",
 } as const;
 
-export function whatsappLink(message?: string) {
-  const base = `https://wa.me/${site.whatsapp}`;
+export function whatsappLink(
+  message?: string,
+  currentSite: Pick<Site, "whatsapp"> = site,
+) {
+  const base = `https://wa.me/${currentSite.whatsapp}`;
   if (!message) return base;
   return `${base}?text=${encodeURIComponent(message)}`;
 }
